@@ -1,0 +1,85 @@
+{
+  "candidate": "medical-conservative-5ep-q99-one-se",
+  "evaluation_target": {
+    "conversations": 38,
+    "questions": 380,
+    "questions_per_conversation": 10,
+    "conversation_and_question_identity": "unseen",
+    "question_types": [
+      "positive",
+      "hard_negative",
+      "off_topic"
+    ]
+  },
+  "pipeline": {
+    "asr": "WhisperX large-v3 with English forced word alignment",
+    "answer_model": "Qwen/Qwen3-8B, BF16, prompt triton-v1b-20260917",
+    "evidence_locator": "deepset/roberta-base-squad2 fine-tuned for 5 epochs with q99 span cap",
+    "evidence_selector": "conversation-nested one-standard-error Ridge gate",
+    "max_answer_tokens": 26,
+    "timestamp_shift_seconds": -0.1
+  },
+  "pretrained_models": {
+    "qwen3_8b": {
+      "repository": "Qwen/Qwen3-8B",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    "whisper": {
+      "repository": "Systran/faster-whisper-large-v3",
+      "revision": "edaa852ec7e145841d8ffdb056a99866b5f0a478"
+    },
+    "aligner": {
+      "name": "wav2vec2_fairseq_base_ls960_asr_ls960.pth",
+      "sha256": "488fd4f16de84438ffc945334278c1b9fb9b7159a806c1080b16111a958c945d"
+    },
+    "silero_vad": {
+      "repository": "snakers4/silero-vad",
+      "torch_hub_cache_directory": "snakers4_silero-vad_master",
+      "file_count": 114,
+      "bytes": 36622299,
+      "tree_sha256": "cbbd649fdce681dcc1baa2cb558e780b9a7d4dcc0c3b2b62e83757435b4e4cfc"
+    }
+  },
+  "development_evidence": {
+    "protocol": "fully nested conversation-group locator and selector evaluation",
+    "conversations": 39,
+    "questions": 390,
+    "accuracy": 0.9923076923076923,
+    "mean_tiou": 0.6151904652099542,
+    "combined_score": 0.7660373560490494,
+    "fold_tiou_deltas": [
+      0.10441310343028454,
+      0.019027571552293288,
+      0.01805653327056883,
+      0.02100818544941785,
+      0.05190414092532103
+    ],
+    "conversation_bootstrap_delta_ci95": [
+      0.02123045904533166,
+      0.06645028842321042
+    ],
+    "generalization_gate": "PASS",
+    "independent_v100_repeat_score": 0.7732771500242422,
+    "independent_v100_repeat_ci95": [
+      0.024382878140147533,
+      0.08693689579435693
+    ]
+  },
+  "external_diagnostic": null,
+  "operational_target": {
+    "gpu": "NVIDIA RTX 5090 32 GB or larger",
+    "request_timeout_seconds": 60,
+    "attempt_requests": 38,
+    "preload_models": true,
+    "cloud_api_during_inference": false
+  },
+  "trained_weight_sha256": "053f61aeeb824fc76024ee1e18a908a44e358c291e33af1286af656ba30f29a7",
+  "selector_sha256": "d08e33791f3e06d1b2d2a6a49ef8ba1fd880b9321fe2a8c5f835959ca2ac987e",
+  "prohibited_dependencies": [
+    "audio filename or SHA routing",
+    "stored validation answers or intervals",
+    "question identity matching",
+    "cloud inference APIs"
+  ],
+  "profile": "conservative-5ep"
+}

@@ -1,0 +1,22 @@
+{
+  "provenance": "Official Helsinki annotations; class size only, no positions or frame identifiers retained",
+  "median_diagonal_source_pixels": {
+    "jammer": 54.20332093147061,
+    "large_launcher": 184.0244548966251,
+    "spacecraft": 65.85590330410783,
+    "condor": 238.32121181296472,
+    "small_plane": 65.94694837519019,
+    "small_launcher": 37.013511046643494,
+    "tank": 68.62215385719105,
+    "helicopter": 149.30505684671232,
+    "small_tower": 82.03048191280712,
+    "ta-ta": 36.6742416417845,
+    "jet_plane": 112.48555462813881,
+    "large_tower": 89.81647886684368,
+    "medium_launcher": 65.06919393998976,
+    "hangar": 228.0021929719098,
+    "medium_plane": 74.41102068914255,
+    "mine_roller": 80.05623023850174
+  },
+  "log_sigma": 0.6931471805599453
+}

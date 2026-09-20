@@ -1,0 +1,121 @@
+{
+  "format": "nordic-ai-cup-medical-release-v1",
+  "source_commit": "735eed3a1a4f5d8bc8a3ac1f1c8897e291443b9f",
+  "candidate": "medical-conservative-5ep-q99-one-se",
+  "profile": "conservative-5ep",
+  "qwen_weights_included": false,
+  "files": {
+    "README.md": {
+      "bytes": 376,
+      "sha256": "c56d476cba88bff73608539ee10b3d798ec9ede30031d07fba51386d6f820bb6"
+    },
+    "candidate.json": {
+      "bytes": 2818,
+      "sha256": "917cb2346aa226a5063c6a9c764d95fce87f281adce9e3f7addcbd38773f9f7c"
+    },
+    "cup/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cup/common.py": {
+      "bytes": 1121,
+      "sha256": "a84c0e4750a070fb4b2aedcc27f1339fde2548796b27a7037fefa2fd85186ab6"
+    },
+    "cup/medical/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cup/medical/asr.py": {
+      "bytes": 7338,
+      "sha256": "81c7faec4e1720bc2c8559b6226afc35e1381d379d5cc8b44b425d0d9b2f9adf"
+    },
+    "cup/medical/config.json": {
+      "bytes": 392,
+      "sha256": "58aec9f0313dd315605d76acef337c95b38fa083a506e087491d8e2dbcdc8eda"
+    },
+    "cup/medical/qa.py": {
+      "bytes": 12490,
+      "sha256": "1f91075eed13e1b97d902593b92dc097a35dca197b6b0dde1ec2f07c350a27f3"
+    },
+    "cup/medical/server.py": {
+      "bytes": 4676,
+      "sha256": "c93b13fde8bb1af914a9697f63d615feb60f400ee1c9a0789f8b321f4d3f7e6c"
+    },
+    "cup/medical/triton/localize.py": {
+      "bytes": 2531,
+      "sha256": "2d3a97787cff59c5a04668c748752efcb104c8039979a2e80e4115ca66d4c70e"
+    },
+    "medical_codex/artifacts/active_selector.json": {
+      "bytes": 5693,
+      "sha256": "d08e33791f3e06d1b2d2a6a49ef8ba1fd880b9321fe2a8c5f835959ca2ac987e"
+    },
+    "medical_codex/runtime/__init__.py": {
+      "bytes": 51,
+      "sha256": "8ad7a1664f6fe3c4ff4cf52ca7c125fc4447f9b4cdc07045ef4341140fa641a1"
+    },
+    "medical_codex/runtime/conservative_selector.py": {
+      "bytes": 5602,
+      "sha256": "3717d9a6a93536f1f8ff9ecfbcaa000d093917b0f785fe8b4e9e7bfb07d74fa4"
+    },
+    "medical_codex/runtime/enriched_features.py": {
+      "bytes": 5886,
+      "sha256": "00a12f7eff287c0143485dbb513d2c53d597bfc132a6f1a937142511a6935ccc"
+    },
+    "medical_codex/runtime/enriched_selector.py": {
+      "bytes": 3519,
+      "sha256": "5ece012d0cc799f0c0e28cc3cd5c3f9a88409008e69385955ca3c8dcf30c4bd5"
+    },
+    "medical_codex/runtime/evidence_refiner.py": {
+      "bytes": 8819,
+      "sha256": "5f8ec7dc2ff88d3c5acc6acb3b0035a4206f82cebe5fb67d2c55d4f2f52cc24d"
+    },
+    "medical_codex/runtime/simple_selector.py": {
+      "bytes": 4129,
+      "sha256": "90c22b9d8fc27625fc666a63b194f86d8e1b027712af8b8a7bf087fae37f4c1c"
+    },
+    "models/medical/active-locator/model/config.json": {
+      "bytes": 721,
+      "sha256": "c03bc88e464988f8027bd6e3478b9cc79bc5ce0097b0c4e1186c9144a15aa99c"
+    },
+    "models/medical/active-locator/model/merges.txt": {
+      "bytes": 456318,
+      "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5"
+    },
+    "models/medical/active-locator/model/model.safetensors": {
+      "bytes": 496250232,
+      "sha256": "053f61aeeb824fc76024ee1e18a908a44e358c291e33af1286af656ba30f29a7"
+    },
+    "models/medical/active-locator/model/special_tokens_map.json": {
+      "bytes": 957,
+      "sha256": "8293ae960b0a0852d4d3813118030a1149a3ed9fe37bc2e1e7b3c2e62eb2d4b7"
+    },
+    "models/medical/active-locator/model/tokenizer.json": {
+      "bytes": 3558907,
+      "sha256": "cf85675c1faf8fcb4f03ed254341c01799d93f1f40304ead1881e1b7ed49207e"
+    },
+    "models/medical/active-locator/model/tokenizer_config.json": {
+      "bytes": 1302,
+      "sha256": "5819f87d31d7a33097c593c70b7a52b04f07f5c63e32f374455e3941e39682a7"
+    },
+    "models/medical/active-locator/model/vocab.json": {
+      "bytes": 798293,
+      "sha256": "ed19656ea1707df69134c4af35c8ceda2cc9860bf2c3495026153a133670ab5e"
+    },
+    "preflight.py": {
+      "bytes": 5609,
+      "sha256": "8085da169d6d5c4dbacc851ddf4a6afead54d6f15e70cf825f11c90742b1dc63"
+    },
+    "requirements.txt": {
+      "bytes": 132,
+      "sha256": "2abb5a549e0e73a612132ed29848200f863ab060757a127a4707c6194fab8205"
+    },
+    "run.sh": {
+      "bytes": 1583,
+      "sha256": "aa5247ad3a56f4078257b141396cf48422f23bfe059c5eca53b97f5bcf5b189b"
+    },
+    "upstream/medical-appointment/dtos.py": {
+      "bytes": 4076,
+      "sha256": "6bcd20f7a78571fae6d0f82e5ae410f576bebb4304d0ddf66e737f60143fef8a"
+    }
+  }
+}

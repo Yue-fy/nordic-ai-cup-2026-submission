@@ -1,0 +1,12 @@
+{
+  "machine": "Photonics",
+  "git_commit": "7c98fcfe8b694de69e1e41d1e418396bf8e9dba7",
+  "date": "2026-09-17",
+  "stage": "T2 development estimate",
+  "expected_tiou": 0.42436,
+  "yes_threshold": 0.30552,
+  "model": "Qwen/Qwen3-8B bf16",
+  "asr_model": "whisperx-large-v3+wav2vec2-base-960h",
+  "split": "development only, cup/medical/split.json",
+  "prompt_version": "triton-v1-20260917"
+}
