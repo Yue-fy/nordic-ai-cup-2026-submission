@@ -126,11 +126,6 @@ from the public validation scene (frame correlation 0.22), which is why the
 evaluation score (0.339) is below the validation score (0.447): the model was
 never adapted to either scene.
 
-**Deliberately excluded.** A "validation-map fusion" candidate scored 0.565 on
-public validation by remembering object coordinates of the validation scene.
-It was declared ineligible and never submitted, because it cannot transfer to
-an unseen sequence and is not a detection method.
-
 ---
 
 ## 3. Medical Appointment — final evaluation 0.7352
