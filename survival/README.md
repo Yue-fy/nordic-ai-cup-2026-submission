@@ -47,3 +47,25 @@ SURVIVAL_PARAMS=params/survival_v8.json uvicorn cup.survival.server:app --host 0
 
 The server resets policy state whenever `sim_time` goes backwards, so it can
 serve consecutive games on one endpoint.
+
+## Reproducing the tuning
+
+`tuning/` holds the harness that produced the parameters. It expects the
+official simulator checked out at `../upstream/survival-simulator` (see
+`cup/common.py`) and Python 3.10+ with `numpy` (and `cma` for `cmaes_driver.py`).
+
+| Script | Purpose |
+|---|---|
+| `run_games.py` | Play whole games on a seed range with a parameter file (multiprocessing) |
+| `confirm.py` | Paired comparison candidate vs incumbent on shared seeds with a bootstrap CI; the promotion test used for every version |
+| `search.py`, `sweep.py` | Evolution-strategy search and one-factor sweeps over continuous parameters |
+| `es_driver.py`, `cmaes_driver.py` | Generation drivers with common random numbers and fresh-seed confirmation; they submit Slurm jobs and need the partition names adapted |
+| `diag_lifetimes.py`, `diag_encounters.py` | Death-cause and predator-encounter diagnostics that motivated the deathbed and breeding rules |
+| `fork.py`, `fork_aa.py`, `rollout_advantage.py` | State-fork counterfactual tooling and the A/A control that showed it to be unreliable |
+
+`params/lineage/` contains every deployed version from v2 to v8. Example
+promotion test:
+
+```bash
+python -m tuning.confirm --candidate params/survival_v8.json --incumbent params/lineage/survival_v6_deployed.json --seeds 90001-90200 --procs 40
+```

@@ -43,3 +43,24 @@ MEDICAL_QA_MODEL=/path/to/Qwen3-8B HF_HOME=/path/to/hf-cache MEDICAL_PORT=9054 .
 
 `run.sh` runs the preflight (asset hashes, offline mode), warms the models and
 starts `cup.medical.server:app` on the official protocol.
+
+## Reproducing the locator and selector
+
+`training/` contains the scripts that produced the shipped artifacts. Inputs
+are the organiser's supplied development set (`upstream/medical-appointment/data/audio`
+and `question_train.csv`).
+
+| Script | Purpose |
+|---|---|
+| `asr_whisperx_cache.py` | Transcribe the development audio once (WhisperX large-v3 + wav2vec2 alignment) into a word-level cache used by all experiments |
+| `qa_eval.py` | Development evaluation of the Qwen3-8B answer prompt and clause-based evidence (accuracy, tIoU, combined score) |
+| `evidence_oracle.py` | Upper bound of the evidence localization given the transcript |
+| `finetune_qa_span_cv.py`, `extractive_qa_span.py`, `model_regularization.py` | Grouped cross-validation fine-tuning of the RoBERTa span locator |
+| `nested_locator_selector_cv.py`, `nested_selector_audit.py` | Fully nested locator + selector evaluation (the 0.766 development figure) |
+| `train_qa_span_full.py` | Train the production locator on all supplied positives (5 epochs, q99 span cap) → `models/medical/active-locator` |
+| `export_conservative_selector.py` | Fit the one-standard-error Ridge gate from out-of-fold locator predictions → `medical_codex/artifacts/active_selector.json` |
+| `structured_tiou_locator_cv.py` | Late alternative locator objective; rejected on public validation |
+
+The scripts were run from the team workspace and keep its layout assumptions
+(paths under `medical_codex/` and `cup/medical/`); they are provided as the
+authoritative record of the procedure.

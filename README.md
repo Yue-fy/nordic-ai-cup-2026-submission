@@ -15,6 +15,20 @@ fully self-hosted. No component looks up answers by audio hash, filename,
 frame index, scene coordinates or any other identity of the evaluation data;
 no cloud inference is used at request time.
 
-Large files: `drone/weights/` (77 MB) and `medical/bundle/models/` (469 MB,
-the fine-tuned RoBERTa locator). Qwen3-8B and WhisperX weights are downloaded
-from Hugging Face by revision (see `medical/README.md`).
+## What can be reproduced from this repository
+
+- **Running the evaluated services** — yes. Each directory holds the exact
+  code, parameters and weights that served the final evaluation, with
+  hashes. Qwen3-8B and WhisperX weights are downloaded from Hugging Face at
+  the pinned revisions; the fine-tuned medical locator (474 MiB) is attached to
+  the GitHub release (see `medical/bundle/models/medical/active-locator/model/DOWNLOAD.md`).
+- **Re-deriving the weights and parameters** — the training and tuning code
+  is included (`drone/training/`, `medical/training/`, `survival/tuning/`)
+  together with the recorded training arguments and seeds. Retraining needs
+  the organiser's supplied data and a GPU; results will be statistically
+  equivalent rather than bit-identical.
+- **How the solutions were developed**, including everything that was tried
+  and rejected and how each decision was tested: `docs/DEVELOPMENT_HISTORY.md`.
+
+Weights in this repository: `drone/weights/` (77 MB) and the medical locator
+via the release asset.

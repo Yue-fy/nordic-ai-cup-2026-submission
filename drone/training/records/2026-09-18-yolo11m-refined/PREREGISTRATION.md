@@ -1,0 +1,5 @@
+# M: conservative reviewed-data refinement of H
+
+Before training or evaluation, 2026-09-18. H medium frozen backbone best checkpoint; train20epochs, seed20260926, freeze10, batch8, lr.0002 on existing refined_aug. This dataset improved small-model full-view public score from E0.2109002 to J0.2778044; test whether that improvement transfers to the stronger H baseline0.2331777. No new data, labels or inference scene information. Same deterministic size selection and held-out diagnostics as H/J.
+
+Public full-view acceptance>=J+.02 (>=.29780437444007006), local offline/realtime AP>=.20, HTTPp95<250ms,max<3333ms, no protocol/model errors. Public exact URL/errors[],completed queue required. Rollback Hactive0.3409891 for the overall system, or J for full-view comparison. A later active composition needs a separate preregistration and remains disabled in this experiment. Four public physical instances held out from foreground synthesis; Helsinki diagnostics same-instance only. Final evaluation prohibited; target .743 remains unmet.

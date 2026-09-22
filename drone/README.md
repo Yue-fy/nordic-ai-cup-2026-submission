@@ -39,3 +39,28 @@ python solution/serve.py --log-dir runs/service --port 9053 \
 included unchanged so the service imports the authoritative DTOs.
 Other camera policies present in the code (scout, flow-edge, hybrid,
 acquisition) were experiments and are disabled by default.
+
+## Reproducing the training
+
+Two-stage fine-tuning with Ultralytics; the exact `args.yaml` and
+`results.csv` of all four runs are in `training/records/`.
+
+1. Clone the organiser's `drone-flyby` package next to `official/` so that
+   `official/drone-flyby/src/helsinki/{images,annotations}` exists.
+2. `python training/prepare_data.py` builds annotated crops and
+   relocated-object compositions (`solution/data/helsinki_aug`).
+3. `python training/prepare_masked_data.py` composes masked objects onto
+   reviewed target-free backgrounds (`masked_aug`); with `--refined` it adds
+   the additional reviewed instances used for stage 2 (`refined_aug`).
+4. Stage 1, frozen backbone, from Ultralytics `yolo11m.pt` / `yolo11l.pt`:
+   `python solution/train.py --initial external/weights/yolo11m.pt --data solution/data/masked_aug/data.yaml --epochs 50 --freeze 10 --lr 0.001 --batch 8`
+   (YOLO11l: 40 epochs).
+5. Stage 2 from the stage-1 `best.pt`: 20 epochs on
+   `solution/data/refined_aug/data.yaml`, `--freeze 10 --lr 0.0002 --batch 8`;
+   augmentation settings as recorded in `training/records/*/args.yaml`.
+
+Random seeds are recorded in each `args.yaml`. GPU nondeterminism means a
+retrained model will be close to, not identical with, the shipped weights.
+
+`official/drone-flyby/utils.py` and `local_evaluator.py` are the organiser's
+files; the service imports `utils` and the request builder from them.

@@ -1,1 +1,4 @@
+__pycache__/
+*.pyc
 medical/bundle/models/medical/active-locator/model/model.safetensors
+medical/bundle/models/medical/live_asr_cache/
